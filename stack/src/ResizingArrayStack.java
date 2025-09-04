@@ -3,7 +3,7 @@ import java.util.*;
 
 
 
-public class ResizingArrayStack<T> implements Iterable{
+public class ResizingArrayStack<T> implements Iterable<T>{
 
     private T[] elements = (T[]) new Object[1];
 
@@ -53,6 +53,7 @@ public class ResizingArrayStack<T> implements Iterable{
         return new ReverseArrayIterator<>();
     }
 
+    @SuppressWarnings("hiding")
     private class ReverseArrayIterator<T> implements Iterator<T>{
         private int i = index;
         
