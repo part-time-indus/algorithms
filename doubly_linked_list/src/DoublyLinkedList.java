@@ -15,7 +15,26 @@ public class DoublyLinkedList<T> {
     }
 
 
-    public void insertAtBeginning(T item){}
+    public void insertAtBeginning(T item){
+        if(item == null) return;
+        Node<T> newNode = new Node<>(item);
+        if(isEmpty()){
+            first = last = newNode;
+        }else{
+            Node<T> oldFirst = first;
+
+            //*NOTE: For list with one element check fails
+
+            if(oldFirst.next != null){
+                oldFirst.next = oldFirst.next.next;
+            }
+            oldFirst.prev = newNode;
+            newNode.next = oldFirst;
+            first = newNode;
+        }
+        itemsCount++;
+
+    }
 
     public void insertAtEnd(T item){}
 
