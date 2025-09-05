@@ -1,16 +1,18 @@
 package doubly_linked_list.src;
 
 public class DoublyLinkedList<T> {
-    Node<T> first = null;
-    Node<T> last = null;
-    int itemsCount = 0;
+    private Node<T> first = null;
+    private Node<T> last = null;
+    private int itemsCount = 0;
 
 
     private boolean isEmpty(){
         return itemsCount == 0;
     }
 
-    public int size(){}
+    public int size(){
+        return itemsCount;
+    }
 
 
     public void insertAtBeginning(T item){}
