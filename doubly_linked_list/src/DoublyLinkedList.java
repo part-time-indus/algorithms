@@ -36,7 +36,18 @@ public class DoublyLinkedList<T> {
 
     }
 
-    public void insertAtEnd(T item){}
+    public void insertAtEnd(T item){
+        Node<T> newNode = new Node<T>(item);
+        if(isEmpty()){
+            first = last = newNode;
+        }else{
+            Node<T> oldLast = last;
+            oldLast.next = newNode;
+            newNode.prev = oldLast;
+            last = newNode;
+        }
+        itemsCount++;
+    }
 
     public void insertAfter(T item, Node<T> node){}
 
