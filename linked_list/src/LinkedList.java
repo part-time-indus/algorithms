@@ -2,11 +2,12 @@ package src;
 public class LinkedList<T> implements Iterable<T>{
     protected Node<T> first = null;
     protected Node<T> last = null;
+    protected int n = 0;
 
 
 
     private boolean isEmpty(){
-        return first == null && last == null;
+        return n == 0;
     }
 
     
@@ -20,6 +21,7 @@ public class LinkedList<T> implements Iterable<T>{
             newNode.next = oldFirst;
             first = newNode;
         }
+        n++;
 
     }
 
@@ -32,11 +34,13 @@ public class LinkedList<T> implements Iterable<T>{
             oldLast.next = newNode;
             last = newNode; 
         }
+        n++;
     }
 
 
 
     public void remove(){
+        if(n <= 0) return;
         if (first == last) {
             first = last = null;            
         }else{
@@ -45,7 +49,13 @@ public class LinkedList<T> implements Iterable<T>{
             oldFirst.next = null;
             oldFirst.value = null;
         }
+        n--;
 
+    }
+
+
+    public int size(){
+        return n;
     }
 
     @Override
