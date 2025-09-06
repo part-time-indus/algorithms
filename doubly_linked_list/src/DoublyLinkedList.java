@@ -155,12 +155,23 @@ public class DoublyLinkedList<T> {
         itemsCount--;
         return node.value;
 
-
     }
 
     public T deleteValue(T item){}
 
-    public search(T item){}
+    public int search(T item){
+        int pos = 1;
+        Node<T> currNode = first;
+        while(currNode != null){
+            if(currNode.equals(item)){
+                break;
+            }
+            pos++;
+            currNode = currNode.next;
+        }
+        return pos;
+        
+    }
 
 
 
