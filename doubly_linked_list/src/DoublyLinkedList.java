@@ -49,6 +49,23 @@ public class DoublyLinkedList<T> {
         itemsCount++;
     }
 
+
+    private boolean nodeExists(Node<T> node){
+        if(node == null) return false;
+        Node<T> currNode = first;
+        boolean nodeFound = false;
+        while(currNode != null){
+            boolean nodesEqual = currNode.value == node.value &&
+                                currNode.prev == node.prev &&
+                                currNode.next == node.next;
+            if(nodesEqual){
+                nodeFound = true;
+            }
+            currNode = currNode.next;
+        }
+        return nodeFound;
+    }
+
     public void insertAfter(T item, Node<T> node){}
 
     public void insertBefore(T item, Node<T> node){}
