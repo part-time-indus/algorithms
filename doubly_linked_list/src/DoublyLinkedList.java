@@ -86,7 +86,7 @@ public class DoublyLinkedList<T> {
             Node<T> newNode = new Node<>(item);
 
             //**** For another node present before given node ***//
-
+            
             if(node.prev != null){
                 newNode.prev = newNode.prev.prev; 
             }
@@ -97,7 +97,22 @@ public class DoublyLinkedList<T> {
         }
     }
 
-    public T removeFromBeginning(){}
+    public T removeFromBeginning(){
+        if(isEmpty()) return null;
+        Node<T> nodeToRemove = first;
+        Node<T> newFirstNode = nodeToRemove.next;
+
+        //**** For only one node in the list ***//
+
+        if(newFirstNode == null){
+            first = last = null;
+        }else{
+            newFirstNode.prev = null;
+            first = newFirstNode;
+        }
+        itemsCount--;
+        return nodeToRemove.value;
+    }
 
     public T removeFromEnd(){}
 
