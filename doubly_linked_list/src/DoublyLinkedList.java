@@ -23,7 +23,7 @@ public class DoublyLinkedList<T> {
         }else{
             Node<T> oldFirst = first;
 
-            //*NOTE: For list with one element check fails
+            //*** For list with one element check fails ***//
 
             if(oldFirst.next != null){
                 oldFirst.next = oldFirst.next.next;
@@ -66,7 +66,20 @@ public class DoublyLinkedList<T> {
         return nodeFound;
     }
 
-    public void insertAfter(T item, Node<T> node){}
+    public void insertAfter(T item, Node<T> node){
+        if(node != null && nodeExists(node)) {
+            Node<T> newNode = new Node<>(item);
+
+            //**** For another node present after given node ***//
+
+            if(node.next != null){
+                newNode.next = node.next.next;
+            }
+            newNode.prev = node;
+            node.next = newNode;
+            itemsCount++;
+        }
+    }
 
     public void insertBefore(T item, Node<T> node){}
 
