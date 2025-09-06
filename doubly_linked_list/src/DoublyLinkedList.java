@@ -23,7 +23,7 @@ public class DoublyLinkedList<T> {
         }else{
             Node<T> oldFirst = first;
 
-            //*** For list with one element check fails ***//
+            //*** If list with one element check fails ***//
 
             if(oldFirst.next != null){
                 oldFirst.next = oldFirst.next.next;
@@ -70,7 +70,7 @@ public class DoublyLinkedList<T> {
         if(node != null && nodeExists(node)) {
             Node<T> newNode = new Node<>(item);
 
-            //**** For another node present after given node ***//
+            //**** If another node present after given node ***//
 
             if(node.next != null){
                 newNode.next = node.next.next;
@@ -85,7 +85,7 @@ public class DoublyLinkedList<T> {
         if(node != null && nodeExists(node)){
             Node<T> newNode = new Node<>(item);
 
-            //**** For another node present before given node ***//
+            //**** If another node present before given node ***//
             
             if(node.prev != null){
                 newNode.prev = newNode.prev.prev; 
@@ -102,7 +102,7 @@ public class DoublyLinkedList<T> {
         Node<T> nodeToRemove = first;
         Node<T> newFirstNode = nodeToRemove.next;
 
-        //**** For only one node in the list ***//
+        //**** If only one node in the list ***//
 
         if(newFirstNode == null){
             first = last = null;
@@ -114,9 +114,49 @@ public class DoublyLinkedList<T> {
         return nodeToRemove.value;
     }
 
-    public T removeFromEnd(){}
+    public T removeFromEnd(){
+        if(isEmpty()) return null;
 
-    public T deleteNode(Node<T> node){}
+        Node<T> nodeToRemove = last;
+        Node<T> newLastNode = nodeToRemove.prev;
+
+        //**** If only one node in the list ***//
+
+        if(newLastNode == null){
+            first = last =null;
+        }else{
+            newLastNode.next = null;
+            last = newLastNode;
+        }
+        
+        itemsCount--;
+        return nodeToRemove.value;
+
+    }
+
+    public T deleteNode(Node<T> node){
+        if(node == null || !nodeExists(node)) return null;
+        Node<T> prevNode = node.prev;
+        Node<T> nextNode = node.next;
+
+        //**** If only one node in the list ***//
+
+        if(prevNode == null && nextNode == null){
+            first = last = null;
+        }
+
+        if(prevNode != null){
+            prevNode.next = nextNode;
+        }
+        if(nextNode != null){
+            nextNode.prev = prevNode;
+        }
+
+        itemsCount--;
+        return node.value;
+
+
+    }
 
     public T deleteValue(T item){}
 
