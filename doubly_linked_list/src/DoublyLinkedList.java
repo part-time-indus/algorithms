@@ -81,7 +81,21 @@ public class DoublyLinkedList<T> {
         }
     }
 
-    public void insertBefore(T item, Node<T> node){}
+    public void insertBefore(T item, Node<T> node){
+        if(node != null && nodeExists(node)){
+            Node<T> newNode = new Node<>(item);
+
+            //**** For another node present before given node ***//
+
+            if(node.prev != null){
+                newNode.prev = newNode.prev.prev; 
+            }
+
+            newNode.next = node;
+            node.prev = newNode;
+            itemsCount++;
+        }
+    }
 
     public T removeFromBeginning(){}
 
