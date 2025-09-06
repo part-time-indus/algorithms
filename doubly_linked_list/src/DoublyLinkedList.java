@@ -67,7 +67,7 @@ public class DoublyLinkedList<T> {
     }
 
     public void insertAfter(T item, Node<T> node){
-        if(node != null && nodeExists(node)) {
+        if(nodeExists(node)) {
             Node<T> newNode = new Node<>(item);
 
             //**** If another node present after given node ***//
@@ -82,7 +82,7 @@ public class DoublyLinkedList<T> {
     }
 
     public void insertBefore(T item, Node<T> node){
-        if(node != null && nodeExists(node)){
+        if(nodeExists(node)){
             Node<T> newNode = new Node<>(item);
 
             //**** If another node present before given node ***//
@@ -135,7 +135,7 @@ public class DoublyLinkedList<T> {
     }
 
     public T deleteNode(Node<T> node){
-        if(node == null || !nodeExists(node)) return null;
+        if(!nodeExists(node)) return null;
         Node<T> prevNode = node.prev;
         Node<T> nextNode = node.next;
 
